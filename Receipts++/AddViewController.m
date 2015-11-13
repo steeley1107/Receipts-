@@ -13,9 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *amountField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (nonatomic) NSMutableSet *tagSelectedSet;
 
 @end
@@ -37,10 +35,7 @@
     self.fetchedResultsController.delegate = self;
     [self.fetchedResultsController performFetch:&fetchError];
     
-    
     //[self addTags];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,13 +43,11 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)cancelButton:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)addReceiptButton:(id)sender {
-    
     [self.delegate addNewReceiptWithAmount:[self.amountField.text floatValue] note:self.descriptionField.text date:self.datePicker.date andTagSet:self.tagSelectedSet ];
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -128,34 +121,6 @@
 {
     [self.tableView endUpdates];
 }
-
-
-//-(void)testTagsSelected {
-//    
-//    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-//    
-//    
-//    NSSortDescriptor *tagTitle = [NSSortDescriptor sortDescriptorWithKey:@"tagName" ascending:YES];
-//    fetchRequest.sortDescriptors = @[tagTitle];
-//    
-//    NSError *fetchError = nil;
-//    
-//    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:@"tagName" cacheName:nil];
-//    self.fetchedResultsController.delegate = self;
-//    [self.fetchedResultsController performFetch:&fetchError];
-//    
-//    
-//    NSError *error;
-//    NSArray *dataArray = [self.context executeFetchRequest:fetchRequest error:&error];
-//    
-//    for (Tag *tag in dataArray) {
-//        //   tag.receipt = newRecipt;
-//        
-//    }
-//    
-//    [self.context save:&error];
-//    
-//}
 
 
 -(void)addTags {

@@ -34,8 +34,6 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.context sectionNameKeyPath:@"tagName" cacheName:nil];
     self.fetchedResultsController.delegate = self;
     [self.fetchedResultsController performFetch:&fetchError];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,7 +132,6 @@
 }
 
 
-
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -169,14 +166,12 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
     return _fetchedResultsController;
 }
 
 
 
 -(void)addNewReceiptWithAmount:(float)amount note:(NSString*)note date:(NSDate*)date andTagSet:(NSMutableSet*)tagSet {
-    
     
     Receipt *newReceiptObject = [NSEntityDescription insertNewObjectForEntityForName:@"Receipt" inManagedObjectContext:self.context];
     
@@ -202,7 +197,6 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
     [self.tableView reloadData];
 }
 
@@ -220,11 +214,9 @@
     
     self.tagsArray  = [self.context executeFetchRequest:fetchRequest error:&fetchError];
     
-    
     for (Tag *tag in self.tagsArray) {
         [self.tagNames addObject:tag.tagName];
     }
-    
 }
 
 
